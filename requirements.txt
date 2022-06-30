@@ -1,8 +1,0 @@
-numpy==1.22.3
-pandas==1.3.5
-scipy
-SimpleITK==2.0.2
-pandas-stubs==1.2.0.7
-tensorflow==2.9.1
-tensorflow-gpu
-keras==2.9.0
