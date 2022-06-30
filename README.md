@@ -1,7 +1,7 @@
 # Thesis
 ## Master Information Studies: Data Science Track
 ### Fully automated White Matter Hyperintensities segmentation in medical images using U-net
-** Author: Jente van Deursen, University of Amsterdam, submitted in partial fulfillment for the degree of master of science.
+**Author**: Jente van Deursen, University of Amsterdam, submitted in partial fulfillment for the degree of master of science.
 
 [Abstract]
 
