@@ -158,7 +158,7 @@ def postprocessing(FLAIR_array, pred):
 
 #----
 
-# some pr-edefined parameters 
+# some pre-defined parameters 
 rows_standard = 200 #the input size 
 cols_standard = 200
 thresh = 30 #threshold for getting the brain mask
