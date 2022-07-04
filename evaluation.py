@@ -4,14 +4,11 @@ import os
 import SimpleITK as sitk
 import scipy.spatial
 
-
-
-# Set the path to the source data (e.g. the training data for self-testing)
-# and the output directory of that subject
-testDir        = 'evaluation_result' # For example: '/data/Utrecht/0'
-participantDir = 'evaluation_result' # For example: '/output/teamname/0'
-
-
+#----
+#Set the path to the source data (e.g. the training data for self-testing)
+#and the output directory of that subject
+testDir        = 'evaluation_result' #For example: '/data/Utrecht/0'
+participantDir = 'evaluation_result' #For example: '/output/teamname/0'
 
 def do():
     """Main function"""
@@ -26,8 +23,8 @@ def do():
     print ('AVD',                 avd,  '%',  '(lower is better, min=0)')
     print ('Lesion detection', recall,       '(higher is better, max=1)')
     print ('Lesion F1',            f1,       '(higher is better, max=1)')
-    
 
+#----
 def getImages(testFilename, resultFilename):
     """Return the test and result images, thresholded and non-WMH masked."""
     testImage   = sitk.ReadImage(testFilename)
@@ -50,7 +47,6 @@ def getImages(testFilename, resultFilename):
         
     return maskedTestImage, bResultImage
     
-
 def getResultFilename(participantDir):
     """Find the filename of the result image.
     
@@ -78,7 +74,8 @@ def getResultFilename(participantDir):
                 
     return resultFilename
     
-    
+#----
+#Dice Similarity coefficient
 def getDSC(testImage, resultImage):    
     """Compute the Dice Similarity Coefficient."""
     testArray   = sitk.GetArrayFromImage(testImage).flatten()
@@ -87,7 +84,7 @@ def getDSC(testImage, resultImage):
     # similarity = 1.0 - dissimilarity
     return 1.0 - scipy.spatial.distance.dice(testArray, resultArray) 
     
-
+# Hausdorf distance
 def getHausdorff(testImage, resultImage):
     """Compute the Hausdorff distance."""
         
@@ -119,8 +116,8 @@ def getHausdorff(testImage, resultImage):
     dResultToTest = getDistancesFromAtoB(resultCoordinates, testCoordinates)    
     
     return max(np.percentile(dTestToResult, 95), np.percentile(dResultToTest, 95))
-    
-    
+
+#Recall & F1
 def getLesionDetection(testImage, resultImage):    
     """Lesion detection metrics, both recall and F1."""
     
@@ -150,7 +147,7 @@ def getLesionDetection(testImage, resultImage):
     
     return recall, f1    
 
-    
+#Average volume distance    
 def getAVD(testImage, resultImage):   
     """Volume statistics."""
     # Compute statistics of both images
