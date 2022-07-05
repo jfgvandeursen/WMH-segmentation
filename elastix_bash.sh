@@ -1,5 +1,4 @@
 #!/bin/bash
-### by matefon
 
 ### paths ###
 p_file="/home/jdvandeursen/Downloads/wmhsegElastix.txt" # path file path
